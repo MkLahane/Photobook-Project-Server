@@ -4,8 +4,6 @@ const { ApolloServer } = require('apollo-server-express');
 const { PubSub } = require('graphql-subscriptions');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-
-
 const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers/index');
 
