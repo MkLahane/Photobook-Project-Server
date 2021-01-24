@@ -41,24 +41,4 @@ app.listen({ port: PORT }, () => {
     console.log(`Server listening at http://localhost:${PORT}`)
 });
 
-// server.listen(PORT, () => {
-//     new SubscriptionServer({
-//         execute,
-//         subscribe,
-//         typeDefs,
-//         resolvers,
-//         context: ({ req }) => {
-//             return {
-//                 prisma,
-//                 req,
-//                 pubsub
-//             }
-//         }
-//     }, {
-//         server: server,
-//         path: '/subscriptions',
-//     });
-//     console.log(`Server listening at http://localhost:${PORT}`);
-
-// });
 
