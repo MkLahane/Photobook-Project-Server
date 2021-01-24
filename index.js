@@ -1,10 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
-const { createServer } = require('http');
-const { execute, subscribe } = require('graphql');
 const { PubSub } = require('graphql-subscriptions');
-const { SubscriptionServer } = require('subscriptions-transport-ws');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
