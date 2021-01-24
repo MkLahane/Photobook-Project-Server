@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id         String      @id @default(uuid())
+  email      String      @unique
+  username   String
+  password   String
+  confirmed  Boolean     @default(false)
+  created_at DateTime    @default(now())
+  photobooks Photobook[]
+  comments   Comment[]
+
+  Like Like[]
+  @@map(name: "users")
+}
+
+model Photobook {
+  id             String    @id @default(uuid())
+  user           User?     @relation(fields: [userId], references: [id])
+  userId         String?
+  photos         Photo[]
+  created_at     DateTime  @default(now())
+  likesCount     Int       @default(0)
+  commentsCount  Int       @default(0)
+  cover_image_id String    @default("")
+  cover_text     String    @default("")
+  comments       Comment[]
+  likes          Like[]
+
+  @@map(name: "photobooks")
+}
+
+model Photo {
+  id          String     @id @default(uuid())
+  img_id      String
+  text_data   String     @default("")
+  Photobook   Photobook? @relation(fields: [photobookId], references: [id])
+  photobookId String?
+  created_at  DateTime   @default(now())
+
+  @@map(name: "photos")
+}
+
+model Comment {
+  id          String     @id @default(uuid())
+  body        String
+  user        User?      @relation(fields: [userId], references: [id])
+  photobook   Photobook? @relation(fields: [photobookId], references: [id])
+  photobookId String?
+  userId      String?
+  likes       Like[]
+  created_at  DateTime   @default(now())
+
+  @@map(name: "comments")
+}
+
+model Like {
+  id          String     @id @default(uuid())
+  user        User?      @relation(fields: [userId], references: [id])
+  userId      String?
+  photobook   Photobook? @relation(fields: [photobookId], references: [id])
+  photobookId String?
+  comment     Comment?   @relation(fields: [commentId], references: [id])
+  commentId   String?
+  created_at  DateTime   @default(now())
+
+
+
+  @@unique([userId, photobookId], name: "photobook_liked")
+  @@unique([userId, commentId], name: "comment_liked")
+  @@map(name: "likes")
+}
