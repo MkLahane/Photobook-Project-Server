@@ -7,7 +7,6 @@ module.exports = {
     Mutation: {
         async login(parent, { email, password }, context, info) {
             const { errors, valid } = validateLoginInput(email, password);
-
             if (!valid) {
                 throw new UserInputError('Errors', {
                     errors

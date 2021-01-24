@@ -61,7 +61,7 @@ module.exports = {
                     expiresIn: '1d',
                 },
                 (err, emailToken) => {
-                    const url = `http://localhost:3001/confirmation/${emailToken}`;
+                    const url = `http://localhost:3000/confirmation/${emailToken}`;
                     console.log(url);
                     transporter.sendMail({
                         to: email,
