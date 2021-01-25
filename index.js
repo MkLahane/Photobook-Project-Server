@@ -34,7 +34,6 @@ apolloServer.applyMiddleware({ app });
 // apolloServer.installSubscriptionHandlers(server);
 const PORT = process.env.PORT || 4000;
 app.listen({ port: PORT }, () => {
-    console.log(process.env.CLOUDINARY_CLOUD_NAME);
     console.log(`Server listening at http://localhost:${PORT}`)
 });
 
