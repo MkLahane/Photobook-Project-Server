@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const { validateLoginInput } = require('../../../../util/validators');
-const { UserInputError, AuthenticationError } = require('apollo-server');
+const { UserInputError } = require('apollo-server-express');
 const generateToken = require('../../../../util/generateToken');
 
 module.exports = {
