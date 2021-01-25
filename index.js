@@ -31,7 +31,7 @@ apolloServer.applyMiddleware({ app });
 
 // const server = createServer(app);
 // apolloServer.installSubscriptionHandlers(server);
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 app.listen({ port: PORT }, () => {
     console.log(`Server listening at http://localhost:${PORT}`)
 });
