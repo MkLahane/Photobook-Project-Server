@@ -6,7 +6,6 @@ module.exports = {
         async deleteComment(_, { commentId, photobookId }, context) {
             const user = checkAuth(context);
             try {
-                console.log('Cloud name:' + process.env.CLOUDINARY_CLOUD_NAME);
                 await context.prisma.like.deleteMany({
                     where: {
                         commentId: commentId
