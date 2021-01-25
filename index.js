@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const typeDefs = require('./graphql/typeDefs');
 const resolvers = require('./graphql/resolvers/index');
 
-console.log(process.env);
+
 
 const prisma = new PrismaClient();
 const pubsub = new PubSub();
